@@ -1,10 +1,17 @@
+/***************************************************************************
+* COMSC-210 | Lab 37 & 38 | Grant Luo
+* Editor: CLion
+* Compiler: Apple clang version 16.0.0
+*/
 #include <iostream>
 #include <fstream>
+#include <list>
+#include <map>
 using namespace std;
 
 const int CAPACITY = 10000;
 
-int get_hash_index(const string &, const int);
+int get_hash_index(const string &, const int capacity = CAPACITY);
 
 int main()
 {
@@ -59,7 +66,7 @@ E1D2665B21EA
  *
  * @return INT;
  */
-int get_hash_index(const string &s, const int capacity = CAPACITY)
+int get_hash_index(const string& s, const int capacity)
 {
     int sum = 0;
     for (char c : s)
