@@ -36,45 +36,57 @@ int main()
             hashTable[hash_index].push_back(line);
         }
         fin.close();
+
+        // Interactive Menu
+        while (true)
+        {
+            cout << "--- Hash Table Interactive Menu ---\n";
+            cout << "1. Print the first 100 entries\n";
+            cout << "2. Search for a key\n";
+            cout << "3. Add a key\n";
+            cout << "4. Remove a key\n";
+            cout << "5. Modify a key\n";
+            cout << "6. Exit\n"
+            cout << "Enter your choice (1 - 6): ";
+
+            int choice;
+            cin >> choice;
+            cin.ignore(1000, '\n');
+
+            // Display the first 100 entries
+            if (choice == 1)
+            {
+                cout << "Displaying the first 100 hash table entries:\n";
+
+                int displayCount = 0;
+                for (auto it = hashTable.begin(); it != hashTable.end() && displayCount < 100; it++, displayCount++)
+                {
+                    cout << "Hash Index " << it->first << ":\n";
+                    for (const auto& code : it->second)
+                        cout << "  " << code << '\n';
+                }
+            }
+
+            if (choice == 2)
+            {
+                cout << "Enter the hash index to search for: ";
+                int searchKey;
+                cin >> searchKey;
+                cin.ignore(1000, '\n');
+
+                auto it = hashTable.find(searchKey);
+                if (it != hashTable.end())
+                {
+                    cout << "Hash Index " << it->first << " contains the following codes:\n";
+                    for (const auto& code : it->second)
+                        cout << "  " << code << '\n';
+                }
+            }
+        }
     }
     catch (const char* e)
     {
         cout << e << '\n';
-    }
-
-    while (true)
-    {
-        cout << "--- Hash Table Interactive Menu ---\n";
-        cout << "1. Print the first 100 entries\n";
-        cout << "2. Search for a key\n";
-        cout << "3. Add a key\n";
-        cout << "4. Remove a key\n";
-        cout << "5. Modify a key\n";
-        cout << "6. Exit\n"
-        cout << "Enter your choice (1 - 6): ";
-
-        int choice;
-        cin >> choice;
-        cin.ignore(1000, '\n');
-
-        // Display the first 100 entries
-        if (choice == 1)
-        {
-            cout << "Displaying the first 100 hash table entries:\n";
-
-            int displayCount = 0;
-            for (auto it = hashTable.begin(); it != hashTable.end() && displayCount < 100; it++, displayCount++)
-            {
-                cout << "Hash Index " << it->first << ":\n";
-                for (const auto &code : it->second)
-                    cout << "  " << code << "\n";
-            }
-        }
-
-        if (choice == 2)
-        {
-
-        }
     }
 
     return 0;
