@@ -109,9 +109,40 @@ int main()
                 cin >> modifyKey;
                 cin.ignore(1000, '\n');
 
-                if (hashTable.find(modifyKey) != hashTable.end())
+                auto it = hashTable.find(modifyKey);
+                if (it != hashTable.end())
                 {
+                    bool modifyExit = false;
+                    while (!modifyExit)
+                    {
+                        cout << "--- Modify Hash Index " << modifyKey << " ---\n";
+                        cout << "1. Add a code\n";
+                        cout << "2. View codes\n";
+                        cout << "3. Return to main menu\n";
+                        cout << "Enter your choice (1 - 4): ";
+                        int modChoice;
+                        cin >> modChoice;
+                        cin.ignore(1000, '\n');
 
+                        switch (modChoice)
+                        {
+                            case 1:
+                            {
+                                cout << "Enter the code to add: ";
+                                string addCode;
+                                getline(cin, addCode);
+                                it->second.push_back(addCode);
+                                cout << "Code added successfully.\n";
+                            }
+
+                            case 2:
+                            {
+                                cout << "Enter the code to remove: ";
+                                string removeCode;
+                                getline(cin, removeCode)
+                            }
+                        }
+                    }
                 }
             }
 
