@@ -46,7 +46,7 @@ int main()
             cout << "3. Add a key\n";
             cout << "4. Remove a key\n";
             cout << "5. Modify a key\n";
-            cout << "6. Exit\n"
+            cout << "6. Exit\n";
             cout << "Enter your choice (1 - 6): ";
 
             int choice;
@@ -83,7 +83,18 @@ int main()
                 }
             }
 
-            // if (choice == 3)
+            if (choice == 3)
+            {
+                cout << "Enter a hash index to add: ";
+                int addKey;
+                cin >> addKey;
+                cin.ignore(1000, '\n');
+                cout << "Enter a code to add to this index: ";
+                int aCode;
+                cin >> aCode;
+                cin.ignore(1000, '\n');
+                hashTable[addKey].push_back(aCode);
+            }
 
             if (choice == 4)
             {
@@ -133,17 +144,43 @@ int main()
                                 getline(cin, addCode);
                                 it->second.push_back(addCode);
                                 cout << "Code added successfully.\n";
+                                break;
                             }
 
                             case 2:
                             {
                                 cout << "Enter the code to remove: ";
                                 string removeCode;
-                                getline(cin, removeCode)
+                                getline(cin, removeCode);
+                                auto codeIt = find(it->second.begin(), it->second.end(), removeCode);
+                                if (codeIt != it->second.end())
+                                {
+                                    it->second.erase(codeIt);
+                                    cout << "Code removed successfully.\n";
+                                }
+                                else
+                                    cout << "Code not found.\n";
+                                break;
+                            }
+
+                            case 3:
+                            {
+                                cout << "Codes in Hash Index " << modifyKey << ":\n";
+                                for (const auto& code : it->second)
+                                    cout << "  " << code << '\n';
+                                break;
+                            }
+
+                            case 4:
+                            {
+                                modifyExit = true;
+                                break;
                             }
                         }
                     }
                 }
+                else
+                    cout << "Hash Index " << modifyKey << " not found.\n";
             }
 
             if (choice == 6)
