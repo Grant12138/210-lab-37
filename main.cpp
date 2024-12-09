@@ -87,7 +87,24 @@ int main()
 
             if (choice == 4)
             {
-                cout << "Enter the hash index to remove: "
+                cout << "Enter the hash index to remove: ";
+                int removeKey;
+                cin >> removeKey;
+                cin.ignore(1000, '\n');
+
+                auto it = hashTable.find(removeKey);
+                if (it != hashTable.end())
+                {
+                    hashTable.erase(it);
+                    cout << "Hash Index " << removeKey << " has been removed.\n";
+                }
+                else
+                    cout << "Hash Index " << removeKey << " not found.\n";
+            }
+
+            if (choice == 5)
+            {
+
             }
         }
     }
