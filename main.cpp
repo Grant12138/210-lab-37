@@ -67,6 +67,7 @@ int main()
                 }
             }
 
+            // Search for a hash index
             if (choice == 2)
             {
                 cout << "Enter the hash index to search for: ";
@@ -77,25 +78,28 @@ int main()
                 auto it = hashTable.find(searchKey);
                 if (it != hashTable.end())
                 {
+                    // Display the associated codes
                     cout << "Hash Index " << it->first << " contains the following codes:\n";
                     for (const auto& code : it->second)
                         cout << "  " << code << '\n';
                 }
             }
 
+            // Add a specified hash index
             if (choice == 3)
             {
                 cout << "Enter a hash index to add: ";
                 int addKey;
                 cin >> addKey;
                 cin.ignore(1000, '\n');
+                // Add a code to this index
                 cout << "Enter a code to add to this index: ";
-                int aCode;
-                cin >> aCode;
-                cin.ignore(1000, '\n');
+                string aCode;
+                getline(cin, aCode);
                 hashTable[addKey].push_back(aCode);
             }
 
+            // Remove an index and its associated codes
             if (choice == 4)
             {
                 cout << "Enter the hash index to remove: ";
@@ -113,6 +117,7 @@ int main()
                     cout << "Hash Index " << removeKey << " not found.\n";
             }
 
+            // Modify an index and its associated codes
             if (choice == 5)
             {
                 cout << "Enter the hash index to modify: ";
@@ -124,12 +129,14 @@ int main()
                 if (it != hashTable.end())
                 {
                     bool modifyExit = false;
+                    // A nested interactive menu
                     while (!modifyExit)
                     {
                         cout << "--- Modify Hash Index " << modifyKey << " ---\n";
                         cout << "1. Add a code\n";
-                        cout << "2. View codes\n";
-                        cout << "3. Return to main menu\n";
+                        cout << "2. Remove a code\n";
+                        cout << "3. View codes\n";
+                        cout << "4. Return to main menu\n";
                         cout << "Enter your choice (1 - 4): ";
                         int modChoice;
                         cin >> modChoice;
@@ -183,6 +190,7 @@ int main()
                     cout << "Hash Index " << modifyKey << " not found.\n";
             }
 
+            // Exit
             if (choice == 6)
                 break;
         }
