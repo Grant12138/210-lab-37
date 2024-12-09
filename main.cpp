@@ -104,8 +104,19 @@ int main()
 
             if (choice == 5)
             {
+                cout << "Enter the hash index to modify: ";
+                int modifyKey;
+                cin >> modifyKey;
+                cin.ignore(1000, '\n');
 
+                if (hashTable.find(modifyKey) != hashTable.end())
+                {
+
+                }
             }
+
+            if (choice == 6)
+                break;
         }
     }
     catch (const char* e)
