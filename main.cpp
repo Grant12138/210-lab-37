@@ -1,18 +1,21 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 int sum_ascii(const string &s);
 
 int main()
 {
-    cout << "The ASCII sum of AB is " << sum_ascii("AB") << "\n";
+    ifstream fin("lab-37-data.txt");
+    if (!fin.good())
+        throw "I/O error";
+    catch (const char* e)
+    {
+        cout << e << '\n';
+    }
 
-//    char a = 'A';
-//    cout << a << endl;
-//    cout << (int) a << endl;
-//    int b = 66;
-//    cout << b << endl;
-//    cout << (char) b << endl;
+    string line;
+
 
     return 0;
 }
