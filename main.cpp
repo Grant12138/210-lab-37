@@ -82,6 +82,13 @@ int main()
                         cout << "  " << code << '\n';
                 }
             }
+
+            // if (choice == 3)
+
+            if (choice == 4)
+            {
+                cout << "Enter the hash index to remove: "
+            }
         }
     }
     catch (const char* e)
